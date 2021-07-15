@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import AuthContextProvider from './components/contexts/AuthContext';
+import ThemeContextProvider from './components/contexts/ThemeContext'
+import TodoContextProvider from './components/contexts/TodoContex';
+import Navbar from "./components/Navbar";
+import ThemeToggle from "./components/ThemeToggle";
+import Todo from "./components/Todo";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeContextProvider>
+        <AuthContextProvider>
+          <Navbar/>
+            <TodoContextProvider>
+              <Todo/>
+            </TodoContextProvider>
+          </AuthContextProvider>
+        <ThemeToggle/>
+      </ThemeContextProvider>
+    
+
+       
     </div>
   );
 }
